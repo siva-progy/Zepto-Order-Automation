@@ -1,0 +1,53 @@
+2026-03-09 18:36:33,376 - INFO - Starting Zepto Order Automation Server
+2026-03-09 18:37:10,512 - INFO - Received new order 20260309_183710 with products: ['Kinder joy', 'Parrys White Label Sugar']
+2026-03-09 18:37:10,512 - INFO - Force starting Chrome with remote debugging (Windows)
+2026-03-09 18:37:11,619 - INFO - Killed existing chrome.exe processes (if any)
+2026-03-09 18:37:11,625 - INFO - Waiting 8 seconds for Chrome to start...
+2026-03-09 18:37:19,627 - INFO - Assuming Chrome is running with remote debugging
+2026-03-09 18:37:20,064 - INFO - Initializing Playwright
+2026-03-09 18:37:20,066 - INFO - Connecting to Chrome (attempt 1/3)
+2026-03-09 18:37:20,414 - INFO - Connected to Chrome instance
+2026-03-09 18:37:20,414 - INFO - Using existing browser context
+2026-03-09 18:37:20,414 - INFO - Using existing page
+2026-03-09 18:37:20,414 - INFO - Processing product: Kinder joy
+2026-03-09 18:37:20,414 - INFO - Navigating to search URL: https://www.zeptonow.com/search?query=Kinder%20joy
+2026-03-09 18:37:41,770 - INFO - Attempting to find Add to Cart button
+2026-03-09 18:37:44,098 - INFO - Found 28 product titles and 27 ADD buttons
+2026-03-09 18:37:44,259 - INFO - Clicked ADD for matched product: Kinder joy
+2026-03-09 18:37:44,259 - INFO - Proceeding to checkout
+2026-03-09 18:38:02,346 - INFO - Trying to open cart (popup, then header cart icon)
+2026-03-09 18:38:02,368 - INFO - 'Go to Cart' popup button not found, trying header cart icon
+2026-03-09 18:38:02,380 - INFO - Clicking cart header icon using selector: button:has-text('Cart')
+2026-03-09 18:38:11,567 - INFO - Found popup with selector: div[role="dialog"]
+2026-03-09 18:38:11,605 - INFO - Clicked popup close button
+2026-03-09 18:38:12,122 - WARNING - Popup might still be visible after closing attempt
+2026-03-09 18:38:22,171 - INFO - Successfully opened cart
+2026-03-09 18:38:22,172 - INFO - Processing product: Parrys White Label Sugar
+2026-03-09 18:38:22,172 - INFO - Navigating to search URL: https://www.zeptonow.com/search?query=Parrys%20White%20Label%20Sugar
+2026-03-09 18:38:43,694 - INFO - Attempting to find Add to Cart button
+2026-03-09 18:38:46,032 - INFO - Found 30 product titles and 29 ADD buttons
+2026-03-09 18:38:46,207 - INFO - Clicked ADD for matched product: Parrys White Label Sugar
+2026-03-09 18:38:46,208 - INFO - Proceeding to checkout
+2026-03-09 18:39:04,282 - INFO - Trying to open cart (popup, then header cart icon)
+2026-03-09 18:39:04,301 - INFO - 'Go to Cart' popup button not found, trying header cart icon
+2026-03-09 18:39:04,312 - INFO - Clicking cart header icon using selector: button:has-text('Cart')
+2026-03-09 18:39:13,449 - INFO - Found popup with selector: div[role="dialog"]
+2026-03-09 18:39:13,484 - INFO - Clicked popup close button
+2026-03-09 18:39:13,998 - WARNING - Popup might still be visible after closing attempt
+2026-03-09 18:39:24,039 - INFO - Successfully opened cart
+2026-03-09 18:39:24,040 - INFO - Looking for payment button
+2026-03-09 18:39:24,055 - INFO - Found payment button using selector: button:has-text("Click to Pay")
+2026-03-09 18:39:25,602 - INFO - Waiting for payment options
+2026-03-09 18:39:27,763 - INFO - Clicked Credit/Debit Card via JS dispatchEvent
+2026-03-09 18:39:29,766 - INFO - Waiting for Juspay payment page to open...
+2026-03-09 18:39:30,272 - INFO - Found Juspay page: https://payments.juspay.in/payment-page/signature/zeptomarketplace-019cd2b77894000000000000aa5fee71
+2026-03-09 18:40:02,303 - INFO - Credit/Debit Card tab not found or already selected
+2026-03-09 18:40:02,311 - INFO - Found card number on main page: input[placeholder="Enter Card Number"]
+2026-03-09 18:40:04,379 - INFO - Entered card number
+2026-03-09 18:40:04,989 - INFO - Found expiry on main page: input[placeholder="MM/YY"]
+2026-03-09 18:40:05,913 - INFO - Entered expiry
+2026-03-09 18:40:06,527 - INFO - Found CVV on main page: input[placeholder="CVV"]
+2026-03-09 18:40:07,399 - INFO - Entered CVV
+2026-03-09 18:40:20,015 - ERROR - Error in card payment process: Pay button not found on Juspay page
+2026-03-09 18:40:20,016 - ERROR - Error during checkout: 400: Failed to process UPI payment
+2026-03-09 18:40:20,029 - ERROR - Browser automation error: 400: Error during checkout: 400: Failed to process UPI payment

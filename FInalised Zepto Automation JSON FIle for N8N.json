@@ -1,0 +1,168 @@
+{
+  "name": "Zepto Grocery Order Input Parser and Normalizer",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 6
+            }
+          ]
+        }
+      },
+      "id": "0c8df601-5f1b-42a9-ab6e-cba3e08e526e",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        496
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "productList",
+              "value": "nutella",
+              "type": "string"
+            },
+            {
+              "id": "id-2",
+              "name": "upiId",
+              "value": "9360648010@kotak811",
+              "type": "string"
+            },
+            {
+              "id": "id-3",
+              "name": "backendUrl",
+              "value": "<__PLACEHOLDER_VALUE__Zepto Backend API URL (e.g., http://localhost:8000/order)__>",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "a9a17ca9-a426-4310-969b-99a39c0735cc",
+      "name": "Workflow Configuration",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        624,
+        496
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "gpt-4o-mini"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=Product list: {{ $json.productList }}\nUPI ID: {{ $json.upiId }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "instructions": "You are an AI agent that prepares product lists for the Zepto Scheduled Order Automation.\n\nYour ONLY job is to output a clean JSON object in the following exact format:\n\n{\n  \"products\": [\"Apple\", \"Milk\"],\n  \"upi_id\": \"9360648010@kotak811\"\n}\n\nRULES:\n1. Output ONLY valid JSON. No sentences, no explanations.\n2. \"products\" must be an array of grocery item names in English.\n3. Remove duplicates, numbers, and extra words.\n4. If no products are set, return an empty list: \"products\": []\n5. Use the UPI ID provided by n8n (do not modify it).\n6. If no UPI is given, output: \"upi_id\": \"default_upi\"\n7. NEVER add anything outside the JSON."
+        }
+      },
+      "id": "d39810c8-591a-4671-83f1-45374317a525",
+      "name": "AI Product List Generator",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2,
+      "position": [
+        752,
+        496
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "6BsxcwwkZFhdpdx2",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unreliable-nontentatively-maryam.ngrok-free.dev/order",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\"products\":[\"nutella\"],\"upi_id\":\"9360648010@kotak811\"}\n",
+        "options": {}
+      },
+      "id": "42129f99-6cce-4d39-9b45-71028f3adced",
+      "name": "Send to Zepto Backend",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1008,
+        496
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Workflow Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Configuration": {
+      "main": [
+        [
+          {
+            "node": "AI Product List Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Product List Generator": {
+      "main": [
+        [
+          {
+            "node": "Send to Zepto Backend",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e371f675-0f87-47a9-a157-da2bb9a20eaf",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "bd602b03637e93d0f7706450fbad765031111c7507694f0f4691c8b5a053118c"
+  },
+  "id": "b8EglAUxkufxsvsr",
+  "tags": []
+}
