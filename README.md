@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/zepto-cover.png" width="100%">
+</p>
+
 # 🛒 Intelligent Grocery Order Automation Platform
 
 A production-ready workflow automation system that automates grocery ordering on **Zepto** using **n8n**, **Python**, **Selenium**, and **FastAPI**.
