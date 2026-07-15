@@ -116,10 +116,10 @@ Project Demo Video
 Data Analyst | Python | SQL | Power BI | Automation
 
 Portfolio:
-https://siva-v-portfolio.netlify.app
+[https://siva-v.netlify.app/]
 
 LinkedIn:
-https://www.linkedin.com/in/YOUR-LINKEDIN
+www.linkedin.com/in/siva-suburamaniyam
 
 GitHub:
 https://github.com/siva-progy
