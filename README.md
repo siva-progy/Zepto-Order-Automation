@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/zepto-cover.png" width="100%">
+  <img src="zepto-cover.png" width="100%">
 </p>
 
 # 🛒 Intelligent Grocery Order Automation Platform
